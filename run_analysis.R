@@ -3,6 +3,9 @@
 # Part of Getting and Cleaning Data course on coursera.
 # Script was created as assignment. 
 
+# loading libraries
+library(stringr)
+
 
 # set paths to data files
 path_to_test <- "./test/X_test.txt"
@@ -29,7 +32,10 @@ features <- read.table("features.txt")
 
 # clean up names
 features$V2 <- gsub("-", "_", features$V2)
+features$V2 <- str_trim(features$V2)
 features$V2 <- tolower(features$V2)
+features$V2 <- gsub("\\(|\\)", "", features$V2)
+
 features$V1 <- paste0("v", features$V1)
 
 print(head(features))
