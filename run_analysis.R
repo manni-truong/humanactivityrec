@@ -51,9 +51,6 @@ train <- cbind(subj_train, y_train, x_train)
 # merging test and train into one set 
 merged_set <- rbind(test, train)
 
-print(dim(test))
-print(dim(train))
-print(dim(merged_set))
 
 # reading column names 
 features <- read.table("features.txt")
@@ -74,7 +71,17 @@ colnames(merged_set)[colnames(merged_set) %in% features$V1] <- features$V2
 merged_set$activity_desc <- activities$V2[match(merged_set$activity_id, activities$V1)]
 
 # only extract mean and std
-#clean_x_merged <- x_merged_set[, grep("mean|std", names(x_merged_set))]
+merged_set <- merged_set[, grep("subject_id|activity_desc|(mean|std)", names(merged_set))]
+
+
+# tidy data set with mean
+tidy <- group_by(merged_set, subject_id, activity_desc) %>% summarise_each(c("mean"))
+
 
 # output data in csv
-write.table(merged_set, "merged.csv", sep = ",", row.names = FALSE)
+write.table(tidy, "tidy_data.csv", sep = ",", row.names = FALSE)
+
+print(dim(test))
+print(dim(train))
+print(dim(merged_set))
+print(dim(tidy))
