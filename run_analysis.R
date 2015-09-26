@@ -28,6 +28,8 @@ print(dim(x_merged_set))
 features <- read.table("features.txt")
 
 # clean up names
-features$V2 <- gsub("-", "_", ft$V2)
+features$V2 <- gsub("-", "_", features$V2)
 features$V2 <- tolower(features$V2)
-features$V1 <- paste0("v", ft$V1)
+features$V1 <- paste0("v", features$V1)
+
+print(head(features))
