@@ -32,10 +32,11 @@ features <- read.table("features.txt")
 
 # clean up names
 features$V2 <- gsub("-", "_", features$V2)
-features$V2 <- str_trim(features$V2)
-features$V2 <- tolower(features$V2)
-features$V2 <- gsub("\\(|\\)", "", features$V2)
+features$V2 <- str_replace_all(features$V2, "([_])|[[:punct:]]", "\\1") # remove punctuation bar "_"
 
-features$V1 <- paste0("v", features$V1)
+features$V1 <- paste0("V", features$V1)
 
-print(head(features))
+
+# change headers
+names(x_merged_set)[names(x_merged_set)==features$V1] <- features$V2
+
