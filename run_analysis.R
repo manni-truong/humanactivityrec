@@ -23,3 +23,11 @@ x_merged_set <- rbind(x_test, x_train)
 print(dim(x_test))
 print(dim(x_train))
 print(dim(x_merged_set))
+
+# reading column names from features.txt
+features <- read.table("features.txt")
+
+# clean up names
+features$V2 <- gsub("-", "_", ft$V2)
+features$V2 <- tolower(features$V2)
+features$V1 <- paste0("v", ft$V1)
