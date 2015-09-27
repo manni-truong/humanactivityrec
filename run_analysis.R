@@ -67,8 +67,10 @@ features$V1 <- paste0("V", features$V1)
 # Give headers descriptive names from features.txt
 colnames(merged_set)[colnames(merged_set) %in% features$V1] <- features$V2
 
+
 # set actitvity names
 merged_set$activity_desc <- activities$V2[match(merged_set$activity_id, activities$V1)]
+
 
 # only extract mean and std
 merged_set <- merged_set[, grep("subject_id|activity_desc|(mean|std)", names(merged_set))]
@@ -79,9 +81,4 @@ tidy <- group_by(merged_set, subject_id, activity_desc) %>% summarise_each(c("me
 
 
 # output data in csv
-write.table(tidy, "tidy_data.csv", sep = ",", row.names = FALSE)
-
-print(dim(test))
-print(dim(train))
-print(dim(merged_set))
-print(dim(tidy))
+write.table(tidy, "tidy_data.txt", row.names = FALSE)
