@@ -5,7 +5,7 @@
 
 # loading libraries
 library(stringr)
-
+library(dplyr)
 
 # set paths to data files
 path_to_test_x <- "./test/X_test.txt"
