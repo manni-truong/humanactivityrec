@@ -31,11 +31,17 @@ In order to obtain the tidy dataset the following original datasets have been us
 ## Data transformations
 To get from the various datasets described earlier to the tidy one, the scripts performs a few steps. Firsty the training and test sets are merged back together to form one. Descriptive names and labels are then applied to make variable names easier to follow. Then we subset only the features that deal with means and standard deviations. Here, we assume that all features have been correctly named so we use pattern matching subset our data by feature names that contain the word "mean" or "std". Some cleaning is also being done, that is stripping out punctuation such as ".,()" and replacing "-" with "_". We don't lowercase as we think it makes the variable names more readable. Lastly to get the final tidy dataset in wide form we group the merged data by subject and activity and calculate the average of each variable for each activity and each subject.
 
-## How to run
+## How to run and view final output
 The main script of this repo is run_analysis.R. Before running make sure your current working directory is set to where the script sits. Then to produce the tidy data set in csv form run:
 
 ```{r}
 source("run_analysis.R")
 ```
 
-It should only take a few seconds to finish and by the end produces a file called tidy_data.txt which meets the principles of tidy in a wide format. 
+It should only take a few seconds to finish and by the end produces a file called tidy_data.txt which meets the principles of tidy in a wide format.
+In order to read the tidy data back into R use:
+
+```{r}
+tidy_data <- read.table("tidy_data.txt", header = TRUE)
+View(data)
+```
