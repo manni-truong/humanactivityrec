@@ -1,4 +1,4 @@
-# Manni Truong, WOodMac 2015
+# Manni Truong, WoodMac 2015
 #
 # Part of Getting and Cleaning Data course on coursera.
 # Script was created as assignment. 
