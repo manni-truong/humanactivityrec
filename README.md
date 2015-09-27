@@ -43,5 +43,5 @@ In order to read the tidy data back into R use:
 
 ```{r}
 tidy_data <- read.table("tidy_data.txt", header = TRUE)
-View(data)
+View(tidy_data)
 ```
