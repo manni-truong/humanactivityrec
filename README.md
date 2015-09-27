@@ -38,4 +38,4 @@ The main script of this repo is run_analysis.R. Before running make sure your cu
 source("run_analysis.R")
 ```
 
-It should only take a few seconds to finish and by the end produces a file called tidy_data.csv. 
+It should only take a few seconds to finish and by the end produces a file called tidy_data.txt which meets the principles of tidy in a wide format. 
